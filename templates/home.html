@@ -1,0 +1,531 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Top dental tourism services paired with luxury travel experiences. Book your dental journey with DentalHavens.">
+    <meta property="og:title" content="DentalHavens - Premium Dental Tourism">
+    <meta property="og:description" content="Pair your dental care with memorable travel experiences.">
+    <meta property="og:image" content="{% static 'images/export.png' %}">
+    <title>Dental Tourism</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        html {
+            overflow-x: hidden;
+        }
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        /* Custom Styles */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* z-index: 10;  */
+            background-color: transparent !important; 
+            padding: 15px 0;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: #00487c;
+        }
+        .nav-link {
+            color: #ffffff;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'images/dental1.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Full height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-content h2 {
+            color: #ffffff;
+            font-size: 36px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #00487c;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .services {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #ffffff;
+            height: 100%; /* Full height */
+        }
+        .service-card {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px; /* Slightly reduced padding for homepage */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-image {
+        max-width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .service-title {
+        font-size: 1.2rem; /* Slightly smaller for homepage */
+        color: #00487c;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .service-description {
+        font-size: 0.85rem; /* Smaller text for brevity */
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #00487c;
+        border-color: #00487c;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #00365f;
+        border-color: #00365f;
+    }
+        
+        .card {
+            background-color: #eaf4fc;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .clinics {
+            background-color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            justify-content: center;
+            height: 100%; /* Full height */
+            margin-top: 70px;
+            margin-bottom: 100px;
+        }
+        .carousel-inner img {
+            width: 700px; /* Set the width */
+            height: 500px; /* Set the height */
+            object-fit: cover; /* Ensure the images fill the dimensions without distortion */
+            border-radius: 12px;
+            margin: 0 auto; /* Center the images */
+        }
+        /* ================================= */        /* ================================= */
+        .tour {
+            background-color: #cfe7f3;
+            padding: 40px 0;
+            text-align: center;
+            height: 100%; /* Full height */
+        }
+        /* ================================= */        /* ================================= */
+        .tour-header {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            color: #00487c;
+        }
+        .tour-description {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 18px;
+            color: #555;
+        }
+        .tour-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .tour-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .tour-card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .tour-card-title {
+            font-size: 20px;
+            color: #00487c;
+        }
+        .tour-card-text {
+            color: #555;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .tour-card-footer {
+            padding: 15px 20px;
+            background-color: #eaf4fc;
+            border-top: 1px solid #ddd;
+        }
+        .active {
+            color: #00487c;
+        }
+        .footer {
+            background-color: #021b2f; /* Deep blue */
+            padding: 40px 20px;
+            color: #ffffff; /* White text */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adds spacing between sections */
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #00bcd4; /* Light blue on hover */
+        }
+
+        .social-media .social-icon {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media .social-icon:hover {
+            color: #00bcd4; /* Light blue on hover */
+            transform: scale(1.2); /* Grows slightly on hover */
+        }
+
+        .contact-info a {
+            color: #00bcd4; /* Light blue links */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links a {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #00bcd4;
+        }
+        .translate-container {
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .translate-label {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+        @media (max-width: 768px) {
+        .navbar {
+            background-color: rgba(0, 0, 0, 0) !important;
+        }
+        .navbar-collapse {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .nav-link {
+            padding: 0.5rem 1rem;
+        }
+        .translate-container {
+            margin: 0.5rem 0;
+            justify-content: center;
+        }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center w-100">
+            <!-- Logo -->
+            <a class="navbar-brand ps-3" href="{% url 'home' %}">DentalHavens</a>
+    
+            <!-- Toggle button for mobile view -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+    
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <nav class="nav d-flex ms-auto me-5">
+                    <a href="{% url 'home' %}" class="nav-link active">Home</a>
+                    <a href="{% url 'services' %}" class="nav-link">Services</a>
+                    <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+                    <a href="{% url 'partner_view' %}" class="nav-link">Our Partners</a>
+                    <a href="{% url 'affiliate_program' %}" class="nav-link">Affiliate Program</a>
+                </nav>
+
+                <div class="translate-container">
+                    <span role="img" aria-label="Globe">🌍</span> Choose Language:
+                    <div id="google_translate_element" class="google-translate"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-down">
+            <h1 style="color: #ffffff;">DentalHavens - Premium Dental Tourism</h1>
+            <h3 class="mb-5" style="color: #ffffff;">Your smile, our priority</h3>
+            <a href="{% url 'register' %}" class="button">Book Now</a>
+        </div>
+    </section>
+
+<!-- Services Section -->
+<section id="services-section" class="services py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-down" style="color: #757575; text-transform: uppercase;">Featured Dental Services</h2>
+        <p class="text-center mb-5" data-aos="fade-up">Discover our top dental care options designed for your smile and health.</p>
+
+        <div class="row">
+            <!-- Dental Implants -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up">
+                <div class="service-card">
+                    <img src="{% static 'clinic/implants.png' %}" alt="Dental Implants" class="service-image">
+                    <h3 class="service-title">Dental Implants</h3>
+                    <p class="service-description">Durable tooth roots for natural-looking replacements.</p>
+                    <a href="{% url 'services' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+            <!-- Cosmetic Dentistry and Veneers -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="150">
+                <div class="service-card">
+                    <img src="{% static 'clinic/cosmetic.png' %}" alt="Cosmetic Dentistry and Veneers" class="service-image">
+                    <h3 class="service-title">Cosmetic Dentistry</h3>
+                    <p class="service-description">Enhance your smile with whitening and veneers.</p>
+                    <a href="{% url 'services' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+            <!-- General Dentistry -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card">
+                    <img src="{% static 'clinic/general.png' %}" alt="General Dentistry" class="service-image">
+                    <h3 class="service-title">General Dentistry</h3>
+                    <p class="service-description">Preventive care for optimal oral health.</p>
+                    <a href="{% url 'services' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tour Categories Section -->
+<section class="tour">
+    <div class="container mt-5 pt-5 mb-5 pb-5">
+        <h2 class="tour-header" data-aos="fade-down">Explore Our Dental Tour Categories</h2>
+        <p class="tour-description" data-aos="fade-up">Pair world-class dental care with your ideal kind of experience. Choose from our curated categories designed for every type of traveler.</p>
+        
+        <div class="row">
+            <!-- City Tour -->
+            <div class="col-md-4 d-flex" data-aos="fade-up-right">
+                <div class="tour-card">
+                    <img src="{% static 'images/city_tour.jpg' %}" alt="City Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">City Tour</h3>
+                        <p class="tour-card-text">Explore modern cities while receiving dental treatment in a dynamic urban atmosphere.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Tour -->
+            <div class="col-md-4 d-flex" data-aos="fade-up">
+                <div class="tour-card">
+                    <img src="{% static 'images/historical_tour.jpg' %}" alt="Historical Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">Historical Tour</h3>
+                        <p class="tour-card-text">Walk through time as you visit ancient landmarks while getting premium dental care.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cultural Tour -->
+            <div class="col-md-4 d-flex" data-aos="fade-up-left">
+                <div class="tour-card">
+                    <img src="{% static 'images/cultural_tour.jpg' %}" alt="Cultural Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">Cultural Tour</h3>
+                        <p class="tour-card-text">Immerse yourself in local traditions and artistry while enjoying quality dental services.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adventure Tour -->
+            <div class="col-md-4 d-flex mt-4" data-aos="fade-up-right">
+                <div class="tour-card">
+                    <img src="{% static 'images/adventure_tour.jpg' %}" alt="Adventure Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">Adventure Tour</h3>
+                        <p class="tour-card-text">For thrill-seekers: combine adrenaline-filled activities with top-tier dental care.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiences Tour -->
+            <div class="col-md-4 d-flex mt-4" data-aos="fade-up">
+                <div class="tour-card">
+                    <img src="{% static 'images/experiences_tour.jpg' %}" alt="Experiences Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">Experiences Tour</h3>
+                        <p class="tour-card-text">Unique and luxurious experiences tailored to elevate your dental journey.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customized Tour -->
+            <div class="col-md-4 d-flex mt-4" data-aos="fade-up-left">
+                <div class="tour-card">
+                    <img src="{% static 'images/customized_tour.jpg' %}" alt="Customized Tour">
+                    <div class="tour-card-body">
+                        <h3 class="tour-card-title">Customized Tour</h3>
+                        <p class="tour-card-text">Your trip, your way. We tailor every detail to match your preferences and dental needs.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-white">
+          <div class="footer-brand mt-3">
+            <h3>DentalHavens</h3>
+            <p>Your smile, our passion. Trusted dental care since 2024.</p>
+          </div>
+          <nav class="footer-nav mt-4">
+            <a href="/" class="text-white mx-3">Home</a>
+            <a href="/services" class="text-white mx-3">Services</a>
+            <a href="/contact" class="text-white mx-3">Contact</a>
+          </nav>
+          <div class="social-media mt-4">
+            <a href="https://facebook.com" class="social-icon mx-2"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div class="contact-info mt-4">
+            <p>Email: <a href="mailto:havensdental@gmail.com" class="text-white">havensdental@gmail.com</a></p>
+          </div>
+          <div class="legal-links mt-4">
+            <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+            <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+          </div>
+          <div class="mt-4">
+            <p>&copy; 2024 DentalHavens. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, 
+        once: true      
+    });
+    </script>
+</body>
+</html>

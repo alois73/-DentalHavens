@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - DentalHavens</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding-top: 70px;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #eaf4fc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10; /* Ensures the navbar appears above the hero image */
+            padding: 15px 0;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: #00487c;
+        }
+
+        /* Contact form styling */
+        .contact-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .contact-form h3 {
+            color: #00487c;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        /* Google Maps iframe */
+        .map-container {
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .active {
+            color: #00487c;
+        }
+        /* Footer styling */
+        .footer {
+            background-color: #021b2f; /* Deep blue */
+            padding: 40px 20px;
+            color: #ffffff; /* White text */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adds spacing between sections */
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #00bcd4; /* Light blue on hover */
+        }
+
+        .social-media .social-icon {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media .social-icon:hover {
+            color: #00bcd4; /* Light blue on hover */
+            transform: scale(1.2); /* Grows slightly on hover */
+        }
+
+        .contact-info a {
+            color: #00bcd4; /* Light blue links */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links a {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #00bcd4;
+        }
+        .translate-container {
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .translate-label {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eaf4fc;">
+        <div class="container-fluid d-flex align-items-center w-100">
+            <!-- Logo -->
+            <a class="navbar-brand pl-3" href="{% url 'home' %}" style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
+    
+            <!-- Toggle button for mobile view -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style="border: none; outline: none;">
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+            </button>
+    
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <nav class="nav d-flex ml-4 ml-auto mr-5">
+                    <a href="{% url 'home' %}" class="nav-link" >Home</a>
+                    <a href="{% url 'services' %}" class="nav-link" >Services</a>
+                    <a href="{% url 'contact' %}" class="nav-link active" >Contact Us</a>
+                    <a href="{% url 'partner_view' %}" class="nav-link" >Our Partners</a>
+                    <a href="{% url 'affiliate_program' %}" class="nav-link" >Affiliate Program</a>
+                </nav>
+
+
+                <div class="translate-container">
+                    <span class="translate-label">🌍 Choose Language:</span>
+                    <div id="google_translate_element" class="google-translate"></div>
+                </div>
+                
+                <script>
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            includedLanguages: 'en,fr,it,de,nl,es',
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+                
+                    // Store selected language in Local Storage
+                    function setLanguage(lang) {
+                        localStorage.setItem("selectedLanguage", lang);
+                        let select = document.querySelector(".goog-te-combo");
+                        if (select) {
+                            select.value = lang;
+                            select.dispatchEvent(new Event("change"));
+                        }
+                    }
+                
+                    // Apply the stored language when page loads
+                    function applySavedLanguage() {
+                        let savedLang = localStorage.getItem("selectedLanguage");
+                        if (savedLang) {
+                            setTimeout(() => setLanguage(savedLang), 500);
+                        }
+                    }
+                
+                    // Listen for language changes
+                    document.addEventListener("DOMContentLoaded", applySavedLanguage);
+                </script>
+                <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <section class="container mt-5 pt-5">
+        <h2 class="text-center mt-4 mb-4" data-aos="fade-down">Feel free to reach out for any questions, concerns or inquiries</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form mx-auto" data-aos="fade-up">
+            <h3>Get in Touch</h3>
+            <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_name">Name</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {{ form.name.errors.as_ul }}
+                        </div>
+                    {% endif %}
+                </div>
+            
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="text-danger">
+                            {{ form.email.errors.as_ul }}
+                        </div>
+                    {% endif %}
+                </div>
+            
+                <div class="form-group">
+                    <label for="id_message">Message</label>
+                    {{ form.content }}
+                    {% if form.content.errors %}
+                        <div class="text-danger">
+                            {{ form.content.errors.as_ul }}
+                        </div>
+                    {% endif %}
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            
+        </div>
+
+        <!-- Google Maps Location -->
+        <div class="map-container mb-5" data-aos="fade-up">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29971.19894869705!2d19.78800022797786!3d41.32754636691607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503108638b1e0f%3A0x9eec65e0fdad4804!2sTirana%2C%20Albania!5e0!3m2!1sen!2s!4v1611814716741!5m2!1sen!2s"
+                width="100%" 
+                height="400" 
+                frameborder="0" 
+                style="border:0;" 
+                allowfullscreen="" 
+                aria-hidden="false" 
+                tabindex="0">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-white">
+          <div class="footer-brand mt-3">
+            <h3>DentalHavens</h3>
+            <p>Your smile, our passion. Trusted dental care since 2024.</p>
+          </div>
+          <nav class="footer-nav mt-4">
+            <a href="/" class="text-white mx-3">Home</a>
+            <a href="/services" class="text-white mx-3">Services</a>
+            <a href="/contact" class="text-white mx-3">Contact</a>
+          </nav>
+          <div class="social-media mt-4">
+            <a href="https://facebook.com" class="social-icon mx-2"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div class="contact-info mt-4">
+            <p>Email: <a href="mailto:info@dentalhavens.com" class="text-white">info@dentalhavens.com</a></p>
+          </div>
+          <div class="legal-links mt-4">
+            <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+            <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+          </div>
+          <div class="mt-4">
+            <p>&copy; 2024 DentalHavens. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, 
+        once: true      
+    });
+    </script>
+</body>
+</html>

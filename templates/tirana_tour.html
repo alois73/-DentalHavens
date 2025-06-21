@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Tour - Tirana</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding-top: 70px;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10; /* Ensures the navbar appears above the hero image */
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 15px 0;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: #00487c;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #00487c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #003354;
+            text-decoration: none;
+        }
+
+        .back-button i {
+            font-size: 18px;
+        }
+
+        .tour-info {
+            position: relative;
+            margin-top: -70px;
+            background-image: url("{% static 'images/tirana_header.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .tour-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for darkness */
+            z-index: 1;
+        }
+
+        .tour-info * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tour-info h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .tour-info p {
+            font-size: 18px;
+        }
+
+        .section-title {
+            margin: 30px 0;
+            color: #00487c;
+        }
+
+        .list-group-item {
+            border: none;
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            background-color: #021b2f; /* Deep blue */
+            padding: 40px 20px;
+            color: #ffffff; /* White text */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adds spacing between sections */
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #00bcd4; /* Light blue on hover */
+        }
+
+        .social-media .social-icon {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media .social-icon:hover {
+            color: #00bcd4; /* Light blue on hover */
+            transform: scale(1.2); /* Grows slightly on hover */
+        }
+
+        .contact-info a {
+            color: #00bcd4; /* Light blue links */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links a {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #00bcd4;
+        }
+        .translate-container {
+            display: none !important;
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .translate-label {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar fixed-top px-4">
+        <a style="color: #ffffff; font-size: 24px; font-weight: bold;">DentalHavens</a>
+
+        <div class="translate-container">
+            <span class="translate-label">🌍 Choose Language:</span>
+            <div id="google_translate_element" class="google-translate"></div>
+        </div>
+        
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,fr,it,de,nl,es',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        
+            // Store selected language in Local Storage
+            function setLanguage(lang) {
+                localStorage.setItem("selectedLanguage", lang);
+                let select = document.querySelector(".goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event("change"));
+                }
+            }
+        
+            // Apply the stored language when page loads
+            function applySavedLanguage() {
+                let savedLang = localStorage.getItem("selectedLanguage");
+                if (savedLang) {
+                    setTimeout(() => setLanguage(savedLang), 500);
+                }
+            }
+        
+            // Listen for language changes
+            document.addEventListener("DOMContentLoaded", applySavedLanguage);
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <a href="{% url 'home' %}" class="back-button">
+            <
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="tour-info">
+        <h1>Guided Tour in the City of Tirana</h1>
+        <p>Explore the bustling capital of Albania with a professional guide. Dive into culture, history, and local flavors.</p>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Tour Description -->
+        <section>
+            <h2 class="section-title">Tour Overview</h2>
+            <p>
+                The capital of Albania, Tirana, is a bustling city founded in 1614 by Sulejman Pashe Bargjini. 
+                It combines culture, history, contemporary architecture, and a warm hospitality shown to tourists.
+            </p>
+            <p>
+                As you take a walk in Tirana, you will enjoy colorful buildings, pleasant cafés, and green parks. 
+                The tour includes walking along the main boulevard, visiting Skanderbeg Square, Mother Teresa Square, 
+                and other cultural sites. We will end the tour with lunch at a local restaurant featuring traditional 
+                and modern Albanian dishes. The experience lasts about 3 hours, including lunch.
+            </p>
+        </section>
+
+        <!-- Sites to Visit -->
+        <section>
+            <h2 class="section-title">Sites We Will Visit</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Skanderbeg Square - the main square of Tirana</li>
+                <li class="list-group-item">The Ethem Bey Mosque</li>
+                <li class="list-group-item">The Resurrection of Christ Orthodox Church</li>
+                <li class="list-group-item">National Historical Museum (exterior only, due to restoration work)</li>
+                <li class="list-group-item">The Palace of Culture and National Library</li>
+                <li class="list-group-item">The Clock Tower</li>
+                <li class="list-group-item">The House of Leaves (former espionage building during the communist era)</li>
+                <li class="list-group-item">The Villa of Enver Hoxha (former dictator of Albania)</li>
+            </ul>
+        </section>
+
+        <!-- Inclusions and Exclusions -->
+        <section>
+            <h2 class="section-title">What's Included</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Professional tour guide for the duration of the tour</li>
+                <li class="list-group-item">Excursion as per the described itinerary</li>
+                <li class="list-group-item">Lunch at a local restaurant in Tirana</li>
+            </ul>
+
+            <h2 class="section-title mt-4">What's Excluded</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Entrance fees to museums and monuments (optional)</li>
+                <li class="list-group-item">Drinks and beverages during lunch</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-white">
+            <!-- Branding and About -->
+            <div class="footer-brand mt-3">
+                <h3>DentalHavens</h3>
+                <p>Your smile, our passion. Trusted dental care since 2024.</p>
+            </div>
+    
+            <!-- Navigation Links -->
+            <nav class="footer-nav mt-4">
+                <a href="/" class="text-white mx-3">Home</a>
+                <a href="/services" class="text-white mx-3">Services</a>
+                <a href="/contact" class="text-white mx-3">Contact</a>
+            </nav>
+    
+            <!-- Social Media -->
+            <div class="social-media mt-4">
+                <a href="https://facebook.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="contact-info mt-4">
+                <p>Email: <a href="mailto:havensdental@gmail.com" class="text-white">havensdental@gmail.com</a></p>
+                <!-- <p>Phone: <a href="tel:+123456789" class="text-white">+1 (234) 567-89</a></p> -->
+            </div>
+    
+            <!-- Legal and Privacy -->
+            <div class="legal-links mt-4">
+                <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+                <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+            </div>
+    
+            <!-- Copyright -->
+            <div class="mt-4">
+                <p>&copy; 2024 DentalHavens. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+</body>
+</html>

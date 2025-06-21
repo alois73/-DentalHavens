@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | DentalHavens</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #eaf4fc;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar a {
+            font-size: 24px;
+            color: #00487c;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            font-size: 18px;
+            color: #00487c;
+            text-decoration: none;
+            margin-left: auto;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .footer {
+            background-color: #021b2f;
+            padding: 40px 20px;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            color: #00bcd4;
+        }
+        .translate-container {
+            display: none !important;
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .translate-label {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#">DentalHavens</a>
+
+        <div class="translate-container">
+            <span class="translate-label">🌍 Choose Language:</span>
+            <div id="google_translate_element" class="google-translate"></div>
+        </div>
+        
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,fr,it,de,nl,es',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        
+            // Store selected language in Local Storage
+            function setLanguage(lang) {
+                localStorage.setItem("selectedLanguage", lang);
+                let select = document.querySelector(".goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event("change"));
+                }
+            }
+        
+            // Apply the stored language when page loads
+            function applySavedLanguage() {
+                let savedLang = localStorage.getItem("selectedLanguage");
+                if (savedLang) {
+                    setTimeout(() => setLanguage(savedLang), 500);
+                }
+            }
+        
+            // Listen for language changes
+            document.addEventListener("DOMContentLoaded", applySavedLanguage);
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <a href="{% url 'home' %}" class="back-btn">&larr; Back</a>
+    </nav>
+
+    <div class="content">
+        <h2 data-aos="fade-down">Privacy Policy</h2>
+        <p data-aos="fade-right" data-aos-delay="400">We value your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
+
+        <h3 data-aos="fade-down">1. Information We Collect</h3>
+        <p data-aos="fade-right" data-aos-delay="400">We may collect personal data such as name, email, phone number, and medical details to provide our services.</p>
+        
+        <h3 data-aos="fade-down">2. How We Use Your Data</h3>
+        <ul>
+            <li data-aos="fade-right" data-aos-delay="400">To process bookings and provide dental services.</li>
+            <li data-aos="fade-right" data-aos-delay="500">To contact you regarding appointments and services.</li>
+            <li data-aos="fade-right" data-aos-delay="600">To improve our website and customer experience.</li>
+        </ul>
+
+        <h3 data-aos="fade-down">3. Data Security</h3>
+        <p data-aos="fade-right" data-aos-delay="400">We implement security measures to protect your data. However, no method of transmission over the internet is 100% secure.</p>
+
+        <h3 data-aos="fade-down">4. Third-Party Sharing</h3>
+        <p data-aos="fade-right" data-aos-delay="400">We do not sell or share your data with third parties except when required by law.</p>
+
+        <h3 data-aos="fade-down">5. Contact Us</h3>
+        <p data-aos="fade-right" data-aos-delay="400">If you have any questions about this Privacy Policy, contact us at <a href="mailto:info@dentalhavens.com">info@dentalhavens.com</a>.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="container text-center text-white">
+          <div class="footer-brand mt-3">
+            <h3>DentalHavens</h3>
+            <p>Your smile, our passion. Trusted dental care since 2024.</p>
+          </div>
+          <nav class="footer-nav mt-4">
+            <a href="/" class="text-white mx-3">Home</a>
+            <a href="/services" class="text-white mx-3">Services</a>
+            <a href="/contact" class="text-white mx-3">Contact</a>
+          </nav>
+          <div class="social-media mt-4">
+            <a href="https://facebook.com" class="social-icon mx-2"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div class="contact-info mt-4">
+            <p>Email: <a href="mailto:info@dentalhavens.com" class="text-white">info@dentalhavens.com</a></p>
+          </div>
+          <div class="legal-links mt-4">
+            <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+            <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+          </div>
+          <div class="mt-4">
+            <p>&copy; 2024 DentalHavens. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, 
+        once: true      
+    });
+    </script>
+</body>
+</html>

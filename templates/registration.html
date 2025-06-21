@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            padding-top: 80px;
+        }
+        .navbar {
+            background-color: #eaf4fc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10; 
+            padding: 15px 0;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: #00487c;
+        }
+        .registration-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 100px;
+        }
+
+        h2 {
+            color: #00487c;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #00487c;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #003366;
+        }
+
+        .form-check-label {
+            margin-left: 5px;
+        }
+
+        .active {
+            color: #00487c;
+        }
+
+        .footer {
+            background-color: #021b2f; /* Deep blue */
+            padding: 40px 20px;
+            color: #ffffff; /* White text */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adds spacing between sections */
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #00bcd4; /* Light blue on hover */
+        }
+
+        .social-media .social-icon {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media .social-icon:hover {
+            color: #00bcd4; /* Light blue on hover */
+            transform: scale(1.2); /* Grows slightly on hover */
+        }
+
+        .contact-info a {
+            color: #00bcd4; /* Light blue links */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links a {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #00bcd4;
+        }
+        .translate-container {
+            display: none !important;
+            background-color: transparent !important; /* Keeps it transparent */
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .translate-label {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+        .back-button {
+            color: #ffffff;
+            background-color: #00487c;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 10px 20px;
+        }
+
+        .back-button:hover {
+            color: var(--accent);
+            background-color: rgba(0, 64, 255, 0.593);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top px-4">
+        <a style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
+
+        <div class="translate-container">
+            <span class="translate-label">🌍 Choose Language:</span>
+            <div id="google_translate_element" class="google-translate"></div>
+        </div>
+        
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,fr,it,de,nl,es',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        
+            // Store selected language in Local Storage
+            function setLanguage(lang) {
+                localStorage.setItem("selectedLanguage", lang);
+                let select = document.querySelector(".goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event("change"));
+                }
+            }
+        
+            // Apply the stored language when page loads
+            function applySavedLanguage() {
+                let savedLang = localStorage.getItem("selectedLanguage");
+                if (savedLang) {
+                    setTimeout(() => setLanguage(savedLang), 500);
+                }
+            }
+        
+            // Listen for language changes
+            document.addEventListener("DOMContentLoaded", applySavedLanguage);
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <a href="#" class="back-button" onclick="history.back()">Back</a>
+
+    </nav>
+
+    <div class="container">
+        <div class="registration-container">
+            <h2 data-aos="fade-down">Book with DentalHavens</h2>
+            <form method="POST" action="{% url 'register_client' %}">
+                {% csrf_token %}
+                <!-- First Name -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="200">
+                    <label for="id_first_name">First Name <span class="text-danger">*</span></label>
+                    <input type="text" name="first_name" id="id_first_name" class="form-control" autocomplete="off" required>
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="400">
+                    <label for="id_last_name">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" name="last_name" id="id_last_name" class="form-control" autocomplete="off" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="600">
+                    <label for="id_email">Email <span class="text-danger">*</span></label>
+                    <input type="email" name="email" id="id_email" class="form-control" autocomplete="off" required>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="800">
+                    <label for="id_phone_number">Phone Number <span class="text-danger">*</span></label>
+                    <input type="text" name="phone_number" id="id_phone_number" class="form-control" autocomplete="off" required>
+                </div>
+
+                <!-- Tour Option -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="1000">
+                    <label for="id_tour_option">Tour Option</label>
+                    <select name="tour_option" id="id_tour_option" class="form-control">
+                        <option value="">Choose a tour</option>
+                        {% for tour in tours %}
+                            <option value="{{ tour.name }}">{{ tour.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Custom Request Field -->
+                <div class="form-group" data-aos="fade-down" data-aos-delay="1200">
+                    <label for="id_custom_request">Describe your dental service request</label>
+                    <textarea name="custom_request" id="id_custom_request" rows="5" class="form-control" placeholder="Example: I want veneers for 6 upper front teeth, and maybe whitening."></textarea>
+                </div>
+
+                <div class="form-group" data-aos="fade-down" data-aos-delay="1200">
+                    <label for="id_ref_code">Refferal code / Optional</label>
+                    <input type="text" name="ref_code" id="id_ref_code" class="form-control" autocomplete="off">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-white">
+            <!-- Branding and About -->
+            <div class="footer-brand mt-3">
+                <h3>DentalHavens</h3>
+                <p>Your smile, our passion. Trusted dental care since 2024.</p>
+            </div>
+    
+            <!-- Navigation Links -->
+            <nav class="footer-nav mt-4">
+                <a href="/" class="text-white mx-3">Home</a>
+                <a href="/services" class="text-white mx-3">Services</a>
+                <a href="/contact" class="text-white mx-3">Contact</a>
+            </nav>
+    
+            <!-- Social Media -->
+            <div class="social-media mt-4">
+                <a href="https://facebook.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon mx-2">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="contact-info mt-4">
+                <p>Email: <a href="mailto:info@dentalhavens.com" class="text-white">info@dentalhavens.com</a></p>
+                <!-- <p>Phone: <a href="tel:+123456789" class="text-white">+1 (234) 567-89</a></p> -->
+            </div>
+    
+            <!-- Legal and Privacy -->
+            <div class="legal-links mt-4">
+                <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+                <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+            </div>
+    
+            <!-- Copyright -->
+            <div class="mt-4">
+                <p>&copy; 2024 DentalHavens. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dynamic Price Calculation Script -->
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, 
+        once: true      
+    });
+    </script>
+</body>
+</html>

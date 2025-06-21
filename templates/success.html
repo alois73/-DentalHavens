@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success | DentalHavens</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .translate-container {
+            display: none !important;
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+        }
+        .translate-label {
+            color: black;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+            padding: 5px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            animation: fadeIn 0.8s ease-in-out;
+            margin-top: 60px;
+        }
+        h2 {
+            color: #00487c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        .btn {
+            background-color: #00487c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #003366;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="translate-container">
+        <span class="translate-label">🌍 Choose Language:</span>
+        <div id="google_translate_element" class="google-translate"></div>
+    </div>
+    
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,fr,it,de,nl,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    
+        function setLanguage(lang) {
+            localStorage.setItem("selectedLanguage", lang);
+            let select = document.querySelector(".goog-te-combo");
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event("change"));
+            }
+        }
+    
+        function applySavedLanguage() {
+            let savedLang = localStorage.getItem("selectedLanguage");
+            if (savedLang) {
+                setTimeout(() => setLanguage(savedLang), 500);
+            }
+        }
+    
+        document.addEventListener("DOMContentLoaded", applySavedLanguage);
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="container">
+        <h2>🎉 Thank You for Contacting Us!</h2>
+        <p>Your message has been successfully sent. Our team will reach out to you in 3-5 business days.</p>
+        <a href="/" class="btn">Return to Homepage</a>
+    </div>
+</body>
+</html>

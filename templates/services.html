@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - DentalHavens</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            padding-top: 70px;
+            scroll-behavior: smooth;
+        }
+
+        /* Header styles */
+        .navbar {
+            background-color: #eaf4fc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 15px 0;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            color: #00487c;
+        }
+
+        /* Page title */
+        .page-title {
+            text-align: center;
+            color: #757575; /* Grayish tone like "DENTAL TREATMENTS" */
+            font-size: 2rem;
+            margin: 60px 0 40px;
+            text-transform: uppercase;
+        }
+
+        .services-section {
+            padding: 60px 0;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            color: #00487c;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .active {
+            color: #00487c;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #021b2f;
+            padding: 40px 20px;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #00bcd4;
+        }
+
+        .social-media .social-icon {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media .social-icon:hover {
+            color: #00bcd4;
+            transform: scale(1.2);
+        }
+
+        .contact-info a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links a {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #00bcd4;
+        }
+
+        .translate-container {
+            background-color: transparent !important;
+            padding: 7px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .translate-label {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .google-translate {
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eaf4fc;">
+        <div class="container-fluid d-flex align-items-center w-100">
+            <!-- Logo -->
+            <a class="navbar-brand pl-3" href="{% url 'home' %}" style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
+    
+            <!-- Toggle button for mobile view -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style="border: none; outline: none;">
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #00487c; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+            </button>
+    
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <nav class="nav d-flex ml-4 ml-auto mr-5">
+                    <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    <a href="{% url 'services' %}" class="nav-link active">Services</a>
+                    <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+                    <a href="{% url 'partner_view' %}" class="nav-link">Our Partner</a>
+                    <a href="{% url 'affiliate_program' %}" class="nav-link">Affiliate Program</a>
+                </nav>
+
+                <div class="translate-container">
+                    <span role="img" aria-label="Globe">🌍</span> Choose Language:
+                    <div id="google_translate_element" class="google-translate"></div>
+                </div>
+                
+                <script>
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            includedLanguages: 'en,fr,it,de,nl,es',
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+                
+                    function setLanguage(lang) {
+                        localStorage.setItem("selectedLanguage", lang);
+                        let select = document.querySelector(".goog-te-combo");
+                        if (select) {
+                            select.value = lang;
+                            select.dispatchEvent(new Event("change"));
+                        }
+                    }
+                
+                    function applySavedLanguage() {
+                        let savedLang = localStorage.getItem("selectedLanguage");
+                        if (savedLang) {
+                            setTimeout(() => setLanguage(savedLang), 500);
+                        }
+                    }
+                
+                    document.addEventListener("DOMContentLoaded", applySavedLanguage);
+                </script>
+                <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <div class="container">
+        <h2 class="page-title" data-aos="fade-down">DENTAL TREATMENTS</h2>
+        <h5 class="text-center" data-aos="fade-up">We provide a range of professional services to meet all your dental needs.</h5>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services-section" class="services py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Dental Implants -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/implants.png' %}" alt="Dental Implants" class="service-image">
+                        <h4 class="service-title">Dental Implants</h4>
+                        <p class="service-description">Durable, artificial tooth roots to support natural-looking replacement teeth.</p>
+                    </div>
+                </div>
+                <!-- Cosmetic Dentistry and Veneers -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/cosmetic.png' %}" alt="Cosmetic Dentistry and Veneers" class="service-image">
+                        <h4 class="service-title">Cosmetic Dentistry and Veneers</h4>
+                        <p class="service-description">Transform your smile with whitening, veneers, and personalized makeovers.</p>
+                    </div>
+                </div>
+                <!-- Dental Crowns and Bridges -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/crown.png' %}" alt="Dental Crowns and Bridges" class="service-image">
+                        <h4 class="service-title">Dental Crowns and Bridges</h4>
+                        <p class="service-description">High-quality prosthetics for damaged or missing teeth, ensuring durability.</p>
+                    </div>
+                </div>
+                <!-- Orthodontic Treatment -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="450">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/orthodontic.png' %}" alt="Orthodontic Treatment" class="service-image">
+                        <h4 class="service-title">Orthodontic Treatment</h4>
+                        <p class="service-description">Achieve straighter teeth and correct bites with orthodontic treatments.</p>
+                    </div>
+                </div>
+                <!-- Dentures -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/dentures.png' %}" alt="Dentures" class="service-image">
+                        <h4 class="service-title">Dentures</h4>
+                        <p class="service-description">Custom-made replacements for comfortable chewing, speaking, and smiling.</p>
+                    </div>
+                </div>
+                <!-- General Dentistry -->
+                <div class="col-md-4 col-sm-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="750">
+                    <div class="service-card">
+                        <img src="{% static 'clinic/general.png' %}" alt="General Dentistry" class="service-image">
+                        <h4 class="service-title">General Dentistry</h4>
+                        <p class="service-description">Preventive care, treatments, and maintenance for optimal oral health and a beautiful smile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-white">
+            <div class="footer-brand mt-3">
+                <h3>DentalHavens</h3>
+                <p>Your smile, our passion. Trusted dental care since 2024.</p>
+            </div>
+            <nav class="footer-nav mt-4">
+                <a href="/" class="text-white mx-3">Home</a>
+                <a href="/services" class="text-white mx-3">Services</a>
+                <a href="/contact" class="text-white mx-3">Contact</a>
+            </nav>
+            <div class="social-media mt-4">
+                <a href="https://facebook.com" class="social-icon mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="contact-info mt-4">
+                <p>Email: <a href="mailto:info@dentalhavens.com" class="text-white">info@dentalhavens.com</a></p>
+            </div>
+            <div class="legal-links mt-4">
+                <a href="{% url 'terms_view' %}" class="text-white mx-3">Terms & Conditions</a>
+                <a href="{% url 'privacy_view' %}" class="text-white mx-3">Privacy Policy</a>
+            </div>
+            <div class="mt-4">
+                <p>© 2024 DentalHavens. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, 
+            once: true      
+        });
+    </script>
+</body>
+</html>
