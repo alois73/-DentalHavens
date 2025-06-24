@@ -319,39 +319,35 @@
 </head>
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="container-fluid d-flex align-items-center w-100">
             <!-- Logo -->
-            <a class="navbar-brand ps-3" href="{% url 'home' %}">DentalHavens</a>
+            <a class="navbar-brand pl-3" href="{% url 'home' %}" style="color: #ffffff; font-size: 24px; font-weight: bold;">DentalHavens</a>
     
             <!-- Toggle button for mobile view -->
             <button
                 class="navbar-toggler"
                 type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
+                data-toggle="collapse"
+                data-target="#navbarNav"
                 aria-controls="navbarNav"
                 aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                aria-label="Toggle navigation"
+                style="border: none; outline: none;">
+                <span style="background-color: #ffffff; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #ffffff; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
+                <span style="background-color: #ffffff; display: block; width: 30px; height: 3px; margin: 4px auto;"></span>
             </button>
     
             <!-- Navigation links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <nav class="nav d-flex ms-auto me-5">
-                    <a href="{% url 'home' %}" class="nav-link active">Home</a>
-                    <a href="{% url 'services' %}" class="nav-link">Services</a>
-                    <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
-                    <a href="{% url 'partner_view' %}" class="nav-link">Our Partners</a>
-                    <a href="{% url 'affiliate_program' %}" class="nav-link">Affiliate Program</a>
+                <nav class="nav d-flex ms-4 ms-auto me-5">
+                    <a href="{% url 'home' %}" class="nav-link active" >Home</a>
+                    <a href="{% url 'services' %}" class="nav-link" >Services</a>
+                    <a href="{% url 'contact' %}" class="nav-link" >Contact Us</a>
+                    <a href="{% url 'partner_view' %}" class="nav-link" >Our Partners</a>
+                    <a href="{% url 'affiliate_program' %}" class="nav-link" >Affiliate Program</a>
                 </nav>
-
-                <div class="translate-container">
-                    <span role="img" aria-label="Globe">🌍</span> Choose Language:
-                    <div id="google_translate_element" class="google-translate"></div>
-                </div>
             </div>
         </div>
     </nav>
