@@ -86,43 +86,6 @@
     <nav class="navbar">
         <a href="#">DentalHavens</a>
 
-        <div class="translate-container">
-            <span class="translate-label">🌍 Choose Language:</span>
-            <div id="google_translate_element" class="google-translate"></div>
-        </div>
-        
-        <script>
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    pageLanguage: 'en',
-                    includedLanguages: 'en,fr,it,de,nl,es',
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-            }
-        
-            // Store selected language in Local Storage
-            function setLanguage(lang) {
-                localStorage.setItem("selectedLanguage", lang);
-                let select = document.querySelector(".goog-te-combo");
-                if (select) {
-                    select.value = lang;
-                    select.dispatchEvent(new Event("change"));
-                }
-            }
-        
-            // Apply the stored language when page loads
-            function applySavedLanguage() {
-                let savedLang = localStorage.getItem("selectedLanguage");
-                if (savedLang) {
-                    setTimeout(() => setLanguage(savedLang), 500);
-                }
-            }
-        
-            // Listen for language changes
-            document.addEventListener("DOMContentLoaded", applySavedLanguage);
-        </script>
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
         <a href="{% url 'home' %}" class="back-btn">&larr; Back</a>
     </nav>
 

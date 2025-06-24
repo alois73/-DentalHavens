@@ -218,40 +218,6 @@
                     <a href="{% url 'partner_view' %}" class="nav-link">Our Partner</a>
                     <a href="{% url 'affiliate_program' %}" class="nav-link">Affiliate Program</a>
                 </nav>
-
-                <div class="translate-container">
-                    <span role="img" aria-label="Globe">🌍</span> Choose Language:
-                    <div id="google_translate_element" class="google-translate"></div>
-                </div>
-                
-                <script>
-                    function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({
-                            pageLanguage: 'en',
-                            includedLanguages: 'en,fr,it,de,nl,es',
-                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                        }, 'google_translate_element');
-                    }
-                
-                    function setLanguage(lang) {
-                        localStorage.setItem("selectedLanguage", lang);
-                        let select = document.querySelector(".goog-te-combo");
-                        if (select) {
-                            select.value = lang;
-                            select.dispatchEvent(new Event("change"));
-                        }
-                    }
-                
-                    function applySavedLanguage() {
-                        let savedLang = localStorage.getItem("selectedLanguage");
-                        if (savedLang) {
-                            setTimeout(() => setLanguage(savedLang), 500);
-                        }
-                    }
-                
-                    document.addEventListener("DOMContentLoaded", applySavedLanguage);
-                </script>
-                <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
         </div>
     </nav>
