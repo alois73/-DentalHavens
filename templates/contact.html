@@ -19,7 +19,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
             color: #333;
             padding-top: 70px;
@@ -136,26 +136,10 @@
         .legal-links a:hover {
             color: #00bcd4;
         }
-        .translate-container {
-            background-color: transparent !important; /* Keeps it transparent */
-            padding: 7px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-        .translate-label {
-            color: rgb(0, 0, 0);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .google-translate {
-            background: white;
-            border-radius: 6px;
+        .navbar-brand {
+            color: #00487c !important;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -164,7 +148,7 @@
     <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eaf4fc;">
         <div class="container-fluid d-flex align-items-center w-100">
             <!-- Logo -->
-            <a class="navbar-brand pl-3" href="{% url 'home' %}" style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
+            <a class="navbar-brand pl-3" href="{% url 'home' %}">DentalHavens</a>
     
             <!-- Toggle button for mobile view -->
             <button

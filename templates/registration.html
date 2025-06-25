@@ -9,7 +9,7 @@
     <style>
         body {
             background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 80px;
         }
         .navbar {
@@ -18,8 +18,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10; 
-            padding: 15px 0;
+            padding: 15px 20px;
         }
         .navbar .logo {
             font-size: 24px;
@@ -127,28 +126,6 @@
         .legal-links a:hover {
             color: #00bcd4;
         }
-        .translate-container {
-            display: none !important;
-            background-color: transparent !important; /* Keeps it transparent */
-            padding: 7px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-        .translate-label {
-            color: rgb(0, 0, 0);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .google-translate {
-            background: white;
-            border-radius: 6px;
-        }
         .back-button {
             color: #ffffff;
             background-color: #00487c;
@@ -162,16 +139,19 @@
 
         .back-button:hover {
             color: var(--accent);
-            background-color: rgba(0, 64, 255, 0.593);
+            background-color: rgba(255, 255, 255, 0.593);
+        }
+        .navbar-brand {
+            color: #00487c !important;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar fixed-top px-4">
-        <a style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
-
-        <a href="#" class="back-button" onclick="history.back()">Back</a>
-
+    <nav class="navbar">
+        <a class="navbar-brand">DentalHavens</a>
+        <a href="#" class="back-button text-white" style="font-size: medium;" onclick="history.back()">Back</a>
     </nav>
 
     <div class="container">

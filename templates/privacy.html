@@ -9,7 +9,7 @@
     <style>
         body {
             background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -28,14 +28,6 @@
             font-weight: bold;
             text-decoration: none;
         }
-
-        .back-btn {
-            font-size: 18px;
-            color: #00487c;
-            text-decoration: none;
-            margin-left: auto;
-        }
-
         .content {
             padding: 50px;
         }
@@ -57,36 +49,31 @@
         .footer a:hover {
             color: #00bcd4;
         }
-        .translate-container {
-            display: none !important;
-            background-color: transparent !important; /* Keeps it transparent */
-            padding: 7px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-        .translate-label {
-            color: rgb(0, 0, 0);
+        .back-button {
+            color: #ffffff;
+            background-color: #00487c;
             font-size: 1rem;
-            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
         }
-        .google-translate {
-            background: white;
-            border-radius: 6px;
+        .back-button:hover {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .navbar-brand {
+            color: #00487c !important;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="#">DentalHavens</a>
-
-        <a href="{% url 'home' %}" class="back-btn">&larr; Back</a>
+        <a href="{% url 'home' %}" class="navbar-brand">DentalHavens</a>
+        <a href="#" class="back-button text-white" style="font-size: medium;" onclick="history.back()">Back</a>
     </nav>
 
     <div class="content">

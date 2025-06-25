@@ -31,7 +31,6 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10;
             padding: 15px 0;
         }
 
@@ -162,28 +161,10 @@
             color: #00bcd4;
         }
 
-        .translate-container {
-            background-color: transparent !important;
-            padding: 7px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-
-        .translate-label {
-            color: rgb(0, 0, 0);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .google-translate {
-            background: white;
-            border-radius: 6px;
+        .navbar-brand {
+            color: #00487c !important;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -192,7 +173,7 @@
     <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eaf4fc;">
         <div class="container-fluid d-flex align-items-center w-100">
             <!-- Logo -->
-            <a class="navbar-brand pl-3" href="{% url 'home' %}" style="color: #00487c; font-size: 24px; font-weight: bold;">DentalHavens</a>
+            <a class="navbar-brand pl-3" href="{% url 'home' %}">DentalHavens</a>
     
             <!-- Toggle button for mobile view -->
             <button
@@ -215,7 +196,7 @@
                     <a href="{% url 'home' %}" class="nav-link">Home</a>
                     <a href="{% url 'services' %}" class="nav-link active">Services</a>
                     <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
-                    <a href="{% url 'partner_view' %}" class="nav-link">Our Partner</a>
+                    <a href="{% url 'partner_view' %}" class="nav-link">Our Partners</a>
                     <a href="{% url 'affiliate_program' %}" class="nav-link">Affiliate Program</a>
                 </nav>
             </div>

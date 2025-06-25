@@ -24,7 +24,7 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg-dark);
       color: var(--text);
       line-height: 1.6;
@@ -36,7 +36,7 @@
       left: 0;
       width: 100%;
       background-color: transparent !important;
-      padding: 15px 0;
+      padding: 15px 20px;
       z-index: 1000;
     }
 
@@ -216,7 +216,7 @@
     <div class="step" data-aos="fade-left" data-aos-delay="500">
       <i class="fas fa-money-bill-wave fa-3x" style="color: var(--accent);"></i>
       <h3>3. Earn</h3>
-      <p>Get paid €50 for every successful patient referral.</p>
+      <p>Earn comssion for every successful patient referral.</p>
     </div>
   </div>
 
@@ -273,33 +273,5 @@
         });
     });
 </script>
-<script>
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,fr,it,de,nl,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-
-  function setLanguage(lang) {
-    localStorage.setItem("selectedLanguage", lang);
-    let select = document.querySelector(".goog-te-combo");
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event("change"));
-    }
-  }
-
-  function applySavedLanguage() {
-    let savedLang = localStorage.getItem("selectedLanguage");
-    if (savedLang) {
-      setTimeout(() => setLanguage(savedLang), 500);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", applySavedLanguage);
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
