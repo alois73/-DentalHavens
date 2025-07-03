@@ -10,7 +10,7 @@ class Promoter(models.Model):
     phone = models.CharField(max_length=15)
     country = models.TextField()
     exp = models.IntegerField(default=0)
-    tier = models.CharField(max_length=50, choices=[('Starter', 'Starter'), ('Bronze', 'Bronze'), ('Silver', 'Silver'), ('Partener', 'Partner'), ('VIP Partner', 'VIP Partner')], default='Tier 1')
+    tier = models.CharField(max_length=50, choices=[('Starter', 'Starter'), ('Bronze', 'Bronze'), ('Silver', 'Silver'), ('Gold', 'Gold'), ('VIP Partner', 'VIP Partner')], default='Tier 1')
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     CASHOUT_STATUS_CHOICES = [
     ('None', 'No Request'),            # Default when no cashout has been requested

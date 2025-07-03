@@ -50,14 +50,14 @@ class Client(models.Model):
                     print(f"✅ VIP Partner: Adding ${bal_add} to promoter, new balance: {promoter.balance}")
                 else:
                     if promoter.exp >= 30:
-                        promoter.tier = 'Partner'
-                        bal_add = Decimal('100.00')
+                        promoter.tier = 'Gold'
+                        bal_add = Decimal('70.00')
                     elif promoter.exp >= 15:
                         promoter.tier = 'Silver'
-                        bal_add = Decimal('70.00')
+                        bal_add = Decimal('50.00')
                     elif promoter.exp >= 5:
                         promoter.tier = 'Bronze'
-                        bal_add = Decimal('40.00')
+                        bal_add = Decimal('35.00')
                     else:
                         promoter.tier = 'Starter'
                         bal_add = Decimal('25.00')
