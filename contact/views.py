@@ -11,11 +11,11 @@ def contact(request):
 
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
-            content = f"Message from {name} ({email}):\n\n{form.cleaned_data['content']}"
 
-            subject = f"Client {name}"
+            subject = f"Client contact: {name}"
+            content = f"Message from {name} ({email}):\n\n{form.cleaned_data['content']}"
             from_email = email  # Sender's email
-            recipient_list = ['info@dentalhavens.com']  # Replace with your email address
+            recipient_list = ['info@dentalhavens.com', 'aloismucaj7@gmail.com']  # Replace with your email address
 
             try:
                 send_mail(

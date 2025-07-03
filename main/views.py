@@ -3,6 +3,8 @@ from .models import Service, Client, Tour
 from django.core.exceptions import ValidationError
 from django.shortcuts import resolve_url
 from affiliate_program.models import Code, Promoter 
+from django.core.mail import send_mail
+from django.contrib import messages
 
 
 def home(request):
@@ -78,7 +80,27 @@ def register_client(request):
                     print(f"✅ Promoter {promoter.username} gained +1 EXP on client registration.")
                 except Exception as e:
                     print("❌ Error awarding EXP to promoter on registration:", e)
-            
+
+            # Send email notification to admin/support
+            subject = f'Client Booked: {first_name} {last_name}'
+            content = f'Client booking information\n\nDetails:\n- Name: {first_name} {last_name}\n- Email: {email}\n- Phone: {phone_number}\n- Tour Option: {tour_option}'
+            from_email = email
+            recipient_list = ['admin@dentalhavens.com', 'info@dentalhavens.com', 'aloismucaj7@gmail.com']  # Replace with your admin/support email
+
+            try:
+                send_mail(
+                    subject,
+                    content,
+                    from_email,  
+                    recipient_list,
+                    fail_silently=False,
+                )
+                messages.success(request, "Your message has been sent successfully!")
+                return redirect('contact')
+            except Exception as e:
+                print(f"Error sending email: {e}")
+                messages.error(request, "There was an error sending your message. Please try again.")
+
             return redirect(resolve_url('success_view'))
 
         except ValidationError as e:
@@ -87,6 +109,9 @@ def register_client(request):
             print("Unexpected error:", e)
 
     serv = Service.objects.all()
+
+    send_mail()
+
     return render(request, 'registration.html', {'serv': serv})
 
 def terms_view(request):

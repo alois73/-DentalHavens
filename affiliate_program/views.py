@@ -3,7 +3,9 @@ from .models import Promoter, Code
 import secrets
 from accounts.models import User  
 from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
 User = get_user_model() 
+from django.contrib import messages
 
 # Create your views here.
 def affiliate_program(request):
@@ -27,12 +29,6 @@ def register_complete(request):
         phone = request.POST.get('phone')
         country = request.POST.get('country')
 
-        if User.objects.filter(username=username).exists():
-            return render(request, 'affiliate/complete.html', {'error': 'Username already taken.'})
-
-        if User.objects.filter(email=email).exists():
-            return render(request, 'affiliate/complete.html', {'error': 'Email already registered.'})
-
         User.objects.create_user(
             email=email, 
             username=username, 
@@ -51,6 +47,27 @@ def register_complete(request):
             user=Promoter.objects.get(email=email)
         )
         request.session['promoter_email'] = email
+
+        # Send email notification to admin/support
+        subject = f'Affiliate Registrations: {name}'
+        content = f'New Affiliate\n\nDetails:\n- Name: {name}\n- User: {username}\n- Email: {email}\n- Phone: {phone}\n- Country: {country}'
+        from_email = email
+        recipient_list = ['admin@dentalhavens.com', 'affiliates@dentalhavens.com', 'aloismucaj7@gmail.com']  # Replace with your admin/support email
+
+        try:
+            send_mail(
+                subject,
+                content,
+                from_email,  
+                recipient_list,
+                fail_silently=False,
+            )
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('affiliate_success')
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            messages.error(request, "There was an error sending your message. Please try again.")
+
         return redirect('affiliate_success')
     
     return redirect('affiliate_program')
