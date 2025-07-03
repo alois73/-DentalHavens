@@ -83,7 +83,7 @@ def register_client(request):
 
             # Send email notification to admin/support
             subject = f'Client Booked: {first_name} {last_name}'
-            content = f'Client booking information\n\nDetails:\n- Name: {first_name} {last_name}\n- Email: {email}\n- Phone: {phone_number}\n- Tour Option: {tour_option}'
+            content = f'New Client\n\nDetails:\n- Name: {first_name} {last_name}\n- Email: {email}\n- Phone: {phone_number}\n- Tour Option: {tour_option}'
             from_email = email
             recipient_list = ['admin@dentalhavens.com', 'info@dentalhavens.com', 'aloismucaj7@gmail.com']  # Replace with your admin/support email
 
@@ -96,7 +96,7 @@ def register_client(request):
                     fail_silently=False,
                 )
                 messages.success(request, "Your message has been sent successfully!")
-                return redirect('contact')
+                return redirect('success_view')
             except Exception as e:
                 print(f"Error sending email: {e}")
                 messages.error(request, "There was an error sending your message. Please try again.")

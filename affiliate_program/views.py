@@ -49,7 +49,7 @@ def register_complete(request):
         request.session['promoter_email'] = email
 
         # Send email notification to admin/support
-        subject = f'Affiliate Registrations: {name}'
+        subject = f'Affiliate Registration: {name}'
         content = f'New Affiliate\n\nDetails:\n- Name: {name}\n- User: {username}\n- Email: {email}\n- Phone: {phone}\n- Country: {country}'
         from_email = email
         recipient_list = ['admin@dentalhavens.com', 'affiliates@dentalhavens.com', 'aloismucaj7@gmail.com']  # Replace with your admin/support email
